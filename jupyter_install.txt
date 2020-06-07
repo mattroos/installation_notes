@@ -8,12 +8,16 @@ How to install jupyter notebook and multiple virtual environments
     sudo apt install python3-pip
     sudo ln -s /usr/bin/pip3 /usr/bin/pip
  
+ 
 2. Install jupyter notebook
 
-https://jupyter.org/install.html
+- Tried doing a pip install, but it failed
+    https://jupyter.org/install.html
 
-- From the global environment (not inside a virtual python env), do a pip install:
-    pip install notebook
+- So did an apt install instead
+    https://askubuntu.com/questions/737094/jupyter-notebook-installation
+    
+    sudo apt install python3-notebook jupyter jupyter-core python-ipykernel 
 
 - Test it:
     jupyter notebook
