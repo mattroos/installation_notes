@@ -19,6 +19,11 @@ How to install jupyter notebook and multiple virtual environments
     
     sudo apt install python3-notebook jupyter jupyter-core python-ipykernel 
 
+- I think this installs python2 as well for some reason. Might need to create
+  a symbolic link from python to python3
+  
+  sudo ln -s /usr/bin/python3 /usr/bin/python
+
 - Test it:
     jupyter notebook
 
@@ -27,6 +32,9 @@ How to install jupyter notebook and multiple virtual environments
 
 https://janakiev.com/blog/jupyter-virtual-envs/
 
+- Install venv if python version is old (< 3.7?)
+    sudo apt-get install python3-venv
+
 - Create it. Generally. This will use the same version of python as the general system version.
     python -m venv ~/python_envs/env_my_new_one
 
@@ -34,7 +42,7 @@ https://janakiev.com/blog/jupyter-virtual-envs/
     source ~/python_envs/env_my_new_one/bin/activate
 
 
-4. Add the virutal environment to the jupyter notebook
+4. Add the virtual environment to the jupyter notebook
 
 - Make sure the virtual environment is activated.
 - Install ipykernel
