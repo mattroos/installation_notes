@@ -45,6 +45,10 @@ https://janakiev.com/blog/jupyter-virtual-envs/
 4. Add the virtual environment to the jupyter notebook
 
 - Make sure the virtual environment is activated.
+
+- Upgrade pip
+    pip install --upgrade pip
+    
 - Install ipykernel
     # pip install --user ipykernel
     pip install ipykernel
