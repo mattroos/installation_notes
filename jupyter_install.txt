@@ -1,10 +1,14 @@
-
 =================================================================
 How to install jupyter notebook and multiple virtual environments
 =================================================================
 
+1. Install pip, if it's not already
 
-1. Install jupyter notebook
+    sudo apt update
+    sudo apt install python3-pip
+    sudo ln -s /usr/bin/pip3 /usr/bin/pip
+ 
+2. Install jupyter notebook
 
 https://jupyter.org/install.html
 
@@ -15,7 +19,7 @@ https://jupyter.org/install.html
     jupyter notebook
 
 
-2. Create a virtual environment
+3. Create a virtual environment
 
 https://janakiev.com/blog/jupyter-virtual-envs/
 
@@ -26,7 +30,7 @@ https://janakiev.com/blog/jupyter-virtual-envs/
     source ~/python_envs/env_my_new_one/bin/activate
 
 
-3. Add the virutal environment to the jupyter notebook
+4. Add the virutal environment to the jupyter notebook
 
 - Make sure the virtual environment is activated.
 - Install ipykernel
