@@ -1,0 +1,53 @@
+=====================================================
+Installing Ubuntu 18.04.4 LTS with kernel 4.15.0-101
+=====================================================
+
+
+1. Download the .iso from this site:
+
+    https://releases.ubuntu.com/bionic/
+
+    The .iso will have a newer kernal (e.g., 5.3, which will have to be replaced later)
+
+2. Write the .iso to a flash drive
+
+- Insert a USB flash driver (> 4GB). Note that the contents of the drive will be overwritten
+- Run Ubuntu's "Startup Disk Creator"
+- Specify the location of the .iso and the target USB drive
+
+3. Boot to the USB drive and install Ubuntu to the target SSD or HDD
+
+4. Remove the USB drive and boot Ubuntu 18.04.4 from the target SSD or HDD
+
+5. Install the older (4.15) kernel
+
+    https://askubuntu.com/questions/1170524/downgrading-18-04-kernel-5-0-to-the-original-kernel-that-came-with-18-04
+
+    sudo apt install linux-generic
+
+6. Boot to the newly installed 4.15 kernel
+
+- Reboot the computer
+- During the black screen, pres Esc. This will launch the GRUB menu.
+- Select the 4.15 kernel and continue
+
+7. Remove the unwanted kernels (e.g., 5.3.)
+
+- Get list of all the kernels, except the currently active kernel:
+    dpkg -l | tail -n +6 | grep -E 'linux-image-[0-9]+' | grep -Fv $(uname -r)
+
+- For each unwanted kernel, use apt to remove it. May need to included the "unsigned" 
+
+    https://www.tecmint.com/remove-old-kernel-in-debian-and-ubuntu/
+    https://askubuntu.com/questions/1170575/removing-linux-image-kernel-causes-linux-image-unsigned-package-to-be-installed
+
+    sudo apt remove --purge linux-image-5.3.0-28-generic linux-image-unsigned-5.3.0-28-generic
+    sudo apt remove --purge linux-image-5.3.0-53-generic linux-image-unsigned-5.3.0-53-generic
+
+8. Update grub
+
+- Not sure this is necessary but likely won't hurt
+
+    sudo update-grub2
+
+9. Reboot
