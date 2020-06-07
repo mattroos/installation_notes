@@ -1,0 +1,65 @@
+
+=================================================================
+How to install jupyter notebook and multiple virtual environments
+=================================================================
+
+
+1. Install jupyter notebook
+
+https://jupyter.org/install.html
+
+- From the global environment (not inside a virtual python env), do a pip install:
+    pip install notebook
+
+- Test it:
+    jupyter notebook
+
+
+2. Create a virtual environment
+
+https://janakiev.com/blog/jupyter-virtual-envs/
+
+- Create it. Generally. This will use the same version of python as the general system version.
+    python -m venv ~/python_envs/env_my_new_one
+
+- Activate it.
+    source ~/python_envs/env_my_new_one/bin/activate
+
+
+3. Add the virutal environment to the jupyter notebook
+
+- Make sure the virtual environment is activated.
+- Install ipykernel
+    # pip install --user ipykernel
+    pip install ipykernel
+
+- Add the virtual environment to Jupyter
+    python -m ipykernel install --user --name=env_ny_new_one
+
+
+
+=====================================================================================
+Side Notes
+=====================================================================================
+
+
+################
+If you want to remove a virtual environment from the list of those that are available in jupyter...
+################
+
+1. Show list of available environments:
+    jupyter kernelspec list
+
+2. Remove the environment you don't want:
+    jupyter kernelspec uninstall myenv
+
+NOTE: This does not remove the virtual environment altogether. It just removes it from the list of ones available within jupyter notebook.
+
+
+################
+If you want to remove a virtual environment altogether, from the computer.
+################
+
+1. From the environment from the list of those available in jupyter (see above)
+2. Delete the directory containing the python virtual environment, e.g.,
+  rm ~/python_envs/my_env
