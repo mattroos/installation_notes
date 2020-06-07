@@ -1,0 +1,59 @@
+==============================================================
+Install CUDA 10.1 for use with Ubuntu 18.04 and TensorFlow 2.2
+==============================================================
+
+Note that as of 6/7/20, TensorFlow cannot use CUDA 11.0, only 10.1.
+Furthermore, there appears to be imcompatibilities between
+linux kernel 5.3 (or 5.4) and the NVIDIA drivers, so what
+is needed is Ubuntu 18.04, kernel 4.15, and CUDA 10.1.
+
+
+Instructions from NVIDIA:
+    https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions
+
+
+1. Install gcc if needed. Should be version > 7.0, I think, for CUDA 10.1.
+    
+    gcc --version
+    sudo apt install gcc
+
+2. Ensure kernel headers and development packages for the currently running kernel are installed
+
+    sudo apt-get install linux-headers-$(uname -r)
+
+3. Download the CUDA toolkit, version 10.1, deb (local) file.
+
+    https://developer.nvidia.com/cuda-downloads
+
+    The .deb package is meant for installation by the Ubuntu apt package system.
+
+    ** The "default" .deb install package for Ubuntu 18.04 will likely contain CUDA 11.0,
+       which is not what is wanted. Click on the "Legacy Releases" button on the
+       NVIDIA download site to find a package for Ubuntu 18.04 and CUDA 10.1.
+       Or follow this link directly:
+            https://developer.nvidia.com/cuda-10.1-download-archive-update2
+
+       This package will also include NVIDIA driver 418.87.00-100
+
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+    sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+    wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-ubuntu1804-10-1-local-10.1.243-418.87.00_1.0-1_amd64.deb
+
+4. Install CUDA
+
+    sudo dpkg -i cuda-repo-ubuntu1804-10-1-local-10.1.243-418.87.00_1.0-1_amd64.deb
+    sudo apt-key add /var/cuda-repo-10-1-local-10.1.243-418.87.00/7fa2af80.pub
+    sudo apt-get update
+    sudo apt-get -y install cuda
+
+5. Add paths in ~/.bashrc
+
+    export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+    export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+- Also make sure /usr/local/cuda points to /usr/local/cuda-10.1
+    sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda
+
+6. Reboot and test
+
+    nvidia-smi
