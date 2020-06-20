@@ -49,7 +49,7 @@ Instructions from NVIDIA:
 5. Add paths in ~/.bashrc
 
     export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
-    export LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+    export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 - Also make sure /usr/local/cuda points to /usr/local/cuda-10.1
     sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda
