@@ -46,6 +46,16 @@ Instructions from NVIDIA:
     sudo apt-get update
     sudo apt-get -y install cuda
 
+    ALTERNATIVELY:
+    If you want to install a different (e.g. higher) driver version, first execute this command (with whatever driver version is desired):    
+    sudo apt install nvidia-driver-440
+    
+    Then repeat the commands above except for the final install command. Instead do this (with whatever toolkit/CUDA version is desired):
+    sudo apt install cuda-toolkit-10-1
+
+    For more info, see here:
+    https://forums.developer.nvidia.com/t/rm-init-adapter-failed-for-brand-new-rtx-2080-super-on-ubuntu-18-04/129296/6
+
 5. Add paths in ~/.bashrc
 
     export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
